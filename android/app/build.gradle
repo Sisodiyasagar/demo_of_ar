@@ -1,0 +1,41 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    // Define the namespace for the app
+    namespace = "com.difrancescogianmarco.ar_flutter_plugin"
+    //namespace "com.example.demo_of_ar"
+    compileSdk 33 // Use a specific value, not `flutter.compileSdkVersion`
+
+    ndkVersion "25.2.9519653" // Match your installed NDK version
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Ensure it's a valid Kotlin JVM target
+    }
+
+    defaultConfig {
+        applicationId "com.example.demo_of_ar" // Unique Application ID
+        minSdk 24 // Minimum supported Android version
+        targetSdk 34 // Match your compileSdk version
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug // Use a debug key for now
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
